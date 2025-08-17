@@ -13,6 +13,7 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
+    "types": ["vite/client"],
 
     /* Linting */
     "strict": true,
@@ -20,7 +21,7 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src", "vite.config.ts"],
+  "include": ["src"],
   "exclude": ["dist", "node_modules"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
