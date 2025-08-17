@@ -90,7 +90,21 @@ seng-cicd-demo/
 
 ## 🔄 CI/CD Pipeline
 
-This project includes a comprehensive GitHub Actions workflow (`.github/workflows/ci.yml`) that demonstrates modern CI/CD practices:
+This project includes comprehensive GitHub Actions workflows that demonstrate modern CI/CD practices:
+
+### CI/CD Pipeline Workflows
+
+**1. Continuous Integration (`.github/workflows/ci.yml`)**
+- Runs on every push and pull request
+- Multi-version Node.js testing (22.x, 24.x)
+- Code quality checks with Biome
+- Unit testing with Vitest
+- Build verification
+
+**2. GitHub Pages Deployment (`.github/workflows/pages.yml`)**
+- Automatic deployment to GitHub Pages on main branch
+- Production build with optimized assets
+- Static site hosting for demo purposes
 
 ### Pipeline Stages
 
@@ -100,17 +114,17 @@ This project includes a comprehensive GitHub Actions workflow (`.github/workflow
 4. **Code Quality** - Biome linting/formatting and TypeScript compilation
 5. **Testing** - Automated unit tests with Vitest
 6. **Build** - Production bundle creation with Vite
-7. **Deployment** - Automated staging and production deployments
+7. **Deployment** - Automated GitHub Pages deployment
 
 ### Branch Strategy
 
-- **`main`** - Production deployments
-- **`develop`** - Staging deployments
-- **Feature branches** - Pull request testing
+- **`main`** - Production deployments to GitHub Pages
+- **`develop`** - Development and testing
+- **Feature branches** - Pull request testing and validation
 
 ### Matrix Testing
 
-The pipeline tests against multiple Node.js versions (18.x, 20.x) to ensure compatibility.
+The pipeline tests against multiple Node.js versions (22.x, 24.x) to ensure compatibility.
 
 ## 🎯 Educational Objectives
 
@@ -182,7 +196,9 @@ pnpm run preview
 ```
 
 ### CI/CD Deployment
-Push to `main` or `develop` branches triggers automatic deployment via GitHub Actions.
+- Push to `main` branch triggers automatic deployment to GitHub Pages
+- Push to `develop` branch triggers CI/CD testing pipeline
+- GitHub Pages deployment available at: `https://[username].github.io/seng-cicd-demo/`
 
 ## 📝 Assignment Ideas
 

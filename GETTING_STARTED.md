@@ -4,7 +4,7 @@
 
 ### Step 1: Install Node.js and pnpm
 Download and install Node.js from [https://nodejs.org/](https://nodejs.org/)
-- Choose version 18.x or 20.x (LTS recommended)
+- Choose version 22.x or 24.x (Latest LTS recommended)
 - Verify installation: `node --version`
 - Install pnpm: `npm install -g pnpm`
 - Verify pnpm: `pnpm --version`
@@ -69,7 +69,8 @@ pnpm run preview
 - 🔄 **Automation**: Automated testing and deployment
 - 🌿 **Branch Strategy**: Development, staging, and production workflows
 - 📊 **Pipeline Stages**: Understanding each step in the process
-- 🚀 **Deployment**: From code to production
+- 🚀 **Deployment**: From code to production (GitHub Pages)
+- 🌐 **Static Site Hosting**: Understanding modern web deployment
 
 ## 🛠️ Exercises for Students
 
@@ -90,6 +91,8 @@ pnpm run preview
 2. **Error boundaries**: Implement React error handling
 3. **Performance optimization**: Add React.memo and useMemo
 4. **E2E testing**: Set up Playwright or Cypress tests
+5. **Custom deployment**: Set up deployment to different platforms
+6. **Environment-specific builds**: Configure staging vs production builds
 
 ## 🚨 Common Issues and Solutions
 
@@ -124,12 +127,20 @@ npm run dev -- --port 3001
 **Problem**: Type errors in IDE
 **Solution**: Ensure your IDE has TypeScript support enabled
 
+## 🌐 Accessing the Deployed Application
+
+Once you push your code to the `main` branch on GitHub, the application will be automatically deployed to GitHub Pages at:
+`https://[your-username].github.io/seng-cicd-demo/`
+
+You can monitor the deployment process in the **Actions** tab of your GitHub repository.
+
 ## 📚 Next Steps
 
 1. **Experiment**: Try modifying different parts of the application
 2. **Collaborate**: Work in teams using Git branches
 3. **Deploy**: Try deploying to platforms like Vercel or Netlify
 4. **Learn More**: Explore React Router, state management libraries, and testing frameworks
+5. **Monitor Deployments**: Watch the GitHub Actions workflows in action
 
 ## 🎓 Assignment Ideas
 

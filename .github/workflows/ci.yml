@@ -33,7 +33,7 @@ jobs:
       run: pnpm run check
       
     - name: Run type check
-      run: pnpm exec tsc --noEmit
+      run: pnpm exec tsc --project tsconfig.app.json
 
     - name: Run tests
       run: pnpm run test:run
@@ -47,21 +47,3 @@ jobs:
       with:
         name: build-files
         path: dist/
-        
-  deploy-production:
-    needs: test
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
-    
-    steps:
-    - name: Download build artifacts
-      uses: actions/download-artifact@v4
-      with:
-        name: build-files
-        path: dist/
-        
-    - name: Deploy to production
-      run: |
-        echo "🚀 Deploying to production environment..."
-        echo "📁 Build files ready in dist/"
-        # Add your production deployment commands here
