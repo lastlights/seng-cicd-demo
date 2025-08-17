@@ -36,6 +36,23 @@ This ensures that:
 - **Development**: Uses root path `/` for local development
 - **Production**: Uses `/seng-cicd-demo/` for GitHub Pages deployment
 
+#### React Router Configuration
+The SPA routing is configured to work with the base path in `src/main.tsx`:
+
+```typescript
+// Automatically uses the correct base path from Vite
+const basename = import.meta.env.BASE_URL;
+
+<BrowserRouter basename={basename}>
+  <App />
+</BrowserRouter>
+```
+
+This means:
+- **Local Development**: Routes work at `http://localhost:3000/`
+- **GitHub Pages**: Routes work at `https://username.github.io/seng-cicd-demo/`
+- **All routes are automatically prefixed** with the correct base path
+
 #### Repository Settings
 
 To enable GitHub Pages deployment, ensure your repository has:
@@ -50,6 +67,20 @@ To enable GitHub Pages deployment, ensure your repository has:
 2. Click the **Actions** tab
 3. Look for "Deploy to GitHub Pages" workflow runs
 4. Click on a run to see detailed logs
+
+### URL Structure
+
+When deployed to GitHub Pages, the application URLs will be:
+
+- **Home**: `https://username.github.io/seng-cicd-demo/`
+- **About**: `https://username.github.io/seng-cicd-demo/about`
+- **Pipeline**: `https://username.github.io/seng-cicd-demo/pipeline`
+
+The SPA handles all routing client-side, so:
+- ✅ Direct navigation to any route works
+- ✅ Refreshing pages works correctly
+- ✅ Browser back/forward buttons work
+- ✅ All assets (CSS, JS, images) load from the correct path
 
 ### Troubleshooting
 

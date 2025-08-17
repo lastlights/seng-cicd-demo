@@ -200,6 +200,15 @@ pnpm run preview
 - Push to `develop` branch triggers CI/CD testing pipeline
 - GitHub Pages deployment available at: `https://[username].github.io/seng-cicd-demo/`
 
+### SPA Routing Configuration
+
+The application automatically handles the GitHub Pages base path (`/seng-cicd-demo/`):
+
+- **Local Development**: Routes work at `http://localhost:3000/` (root path)
+- **GitHub Pages**: Routes work at `https://username.github.io/seng-cicd-demo/` (with base path)
+- **React Router** automatically uses the correct `basename` from Vite's configuration
+- **All assets** (CSS, JS, images) load with the correct path prefix
+
 ## 📝 Assignment Ideas
 
 ### For Students

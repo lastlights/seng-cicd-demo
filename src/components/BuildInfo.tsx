@@ -17,6 +17,8 @@ function BuildInfo() {
 		SSR: import.meta.env.SSR,
 	};
 
+	const baseUrl = import.meta.env.BASE_URL;
+
 	return (
 		<div className="build-info">
 			<h3>🔧 Build Information</h3>
@@ -56,6 +58,18 @@ function BuildInfo() {
 					<br />
 					<span style={{ fontSize: "0.9em" }}>
 						Vite {import.meta.env.VITE_VERSION || "5.0.0"}
+					</span>
+				</div>
+				<div>
+					<strong>Base URL:</strong>
+					<br />
+					<span
+						style={{
+							fontSize: "0.9em",
+							color: baseUrl === "/" ? "#4ade80" : "#fbbf24",
+						}}
+					>
+						{baseUrl} {baseUrl === "/" ? "(Local)" : "(GitHub Pages)"}
 					</span>
 				</div>
 			</div>
