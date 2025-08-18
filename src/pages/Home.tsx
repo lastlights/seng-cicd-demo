@@ -7,7 +7,7 @@ function Home() {
 		<div>
 			<h1>CI/CD Demo Application</h1>
 			<div className="card">
-				<h2>Welcome, University Students! 🎓</h2>
+				<h2>Welcome, University Graduates! 🎓</h2>
 				<p>
 					This is a demonstration Single Page Application (SPA) built with
 					React, TypeScript, and Vite. It's designed to showcase how modern web
