@@ -54,6 +54,7 @@ pnpm run preview
 - 📝 **TypeScript**: Type-safe JavaScript development
 - 🎨 **Modern CSS**: Responsive design with Grid and Flexbox
 - 🔄 **State Management**: React hooks and component state
+- 🌐 **Client-side Routing**: HashRouter for SPA navigation
 
 ### Build Tools
 - ⚡ **Vite**: Fast development server and build tool
@@ -130,9 +131,19 @@ npm run dev -- --port 3001
 ## 🌐 Accessing the Deployed Application
 
 Once you push your code to the `main` branch on GitHub, the application will be automatically deployed to GitHub Pages at:
-`https://[your-username].github.io/seng-cicd-demo/`
+`https://[your-username].github.io/seng-cicd-demo/#/`
 
 You can monitor the deployment process in the **Actions** tab of your GitHub repository.
+
+### Why HashRouter?
+
+This project uses **HashRouter** instead of **BrowserRouter** because:
+- ✅ **No server configuration needed** - Works with any static hosting
+- ✅ **Page refresh works** - Hash routes don't require server-side handling
+- ✅ **Simple deployment** - Perfect for GitHub Pages and other static hosts
+- ✅ **Reliable routing** - Consistent behavior across different environments
+
+URLs will look like: `https://example.com/#/about` instead of `https://example.com/about`
 
 ## 📚 Next Steps
 

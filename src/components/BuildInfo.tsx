@@ -61,15 +61,10 @@ function BuildInfo() {
 					</span>
 				</div>
 				<div>
-					<strong>Base URL:</strong>
+					<strong>Router Type:</strong>
 					<br />
-					<span
-						style={{
-							fontSize: "0.9em",
-							color: baseUrl === "/" ? "#4ade80" : "#fbbf24",
-						}}
-					>
-						{baseUrl} {baseUrl === "/" ? "(Local)" : "(GitHub Pages)"}
+					<span style={{ fontSize: "0.9em", color: "#4ade80" }}>
+						HashRouter (#{baseUrl === "/" ? "local" : "github-pages"})
 					</span>
 				</div>
 			</div>

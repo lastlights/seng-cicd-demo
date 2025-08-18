@@ -48,7 +48,7 @@ pnpm run dev
 ### Frontend Framework
 - **React 18.2.0** - Component-based UI library
 - **TypeScript 5.2.2** - Type-safe JavaScript
-- **React Router 6.20.1** - Client-side routing
+- **React Router 6.20.1** - Client-side routing (HashRouter for static hosting compatibility)
 
 ### Build Tools
 - **Vite 5.0.0** - Fast build tool and dev server
@@ -202,12 +202,13 @@ pnpm run preview
 
 ### SPA Routing Configuration
 
-The application automatically handles the GitHub Pages base path (`/seng-cicd-demo/`):
+The application uses HashRouter for client-side routing:
 
-- **Local Development**: Routes work at `http://localhost:3000/` (root path)
-- **GitHub Pages**: Routes work at `https://username.github.io/seng-cicd-demo/` (with base path)
-- **React Router** automatically uses the correct `basename` from Vite's configuration
+- **Local Development**: Routes work at `http://localhost:3000/#/` (hash-based)
+- **GitHub Pages**: Routes work at `https://username.github.io/seng-cicd-demo/#/` (hash-based)
+- **HashRouter** provides reliable routing without server configuration
 - **All assets** (CSS, JS, images) load with the correct path prefix
+- **Universal compatibility** with any static hosting provider
 
 ## 📝 Assignment Ideas
 

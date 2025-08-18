@@ -37,21 +37,21 @@ This ensures that:
 - **Production**: Uses `/seng-cicd-demo/` for GitHub Pages deployment
 
 #### React Router Configuration
-The SPA routing is configured to work with the base path in `src/main.tsx`:
+The SPA routing is configured to use HashRouter in `src/main.tsx`:
 
 ```typescript
-// Automatically uses the correct base path from Vite
-const basename = import.meta.env.BASE_URL;
+import { HashRouter } from "react-router-dom";
 
-<BrowserRouter basename={basename}>
+<HashRouter>
   <App />
-</BrowserRouter>
+</HashRouter>
 ```
 
 This means:
-- **Local Development**: Routes work at `http://localhost:3000/`
-- **GitHub Pages**: Routes work at `https://username.github.io/seng-cicd-demo/`
-- **All routes are automatically prefixed** with the correct base path
+- **Local Development**: Routes work at `http://localhost:3000/#/`
+- **GitHub Pages**: Routes work at `https://username.github.io/seng-cicd-demo/#/`
+- **Hash-based routing**: No server configuration needed for client-side routes
+- **Works everywhere**: Compatible with any static hosting provider
 
 #### Repository Settings
 
@@ -72,15 +72,16 @@ To enable GitHub Pages deployment, ensure your repository has:
 
 When deployed to GitHub Pages, the application URLs will be:
 
-- **Home**: `https://username.github.io/seng-cicd-demo/`
-- **About**: `https://username.github.io/seng-cicd-demo/about`
-- **Pipeline**: `https://username.github.io/seng-cicd-demo/pipeline`
+- **Home**: `https://username.github.io/seng-cicd-demo/#/`
+- **About**: `https://username.github.io/seng-cicd-demo/#/about`
+- **Pipeline**: `https://username.github.io/seng-cicd-demo/#/pipeline`
 
-The SPA handles all routing client-side, so:
-- ✅ Direct navigation to any route works
-- ✅ Refreshing pages works correctly
+The SPA uses HashRouter for routing, which means:
+- ✅ Direct navigation to any route works (including page refresh)
+- ✅ No server configuration needed for client-side routes
 - ✅ Browser back/forward buttons work
 - ✅ All assets (CSS, JS, images) load from the correct path
+- ✅ Compatible with any static hosting provider
 
 ### Troubleshooting
 
@@ -94,6 +95,10 @@ The SPA handles all routing client-side, so:
 **❌ Assets not loading (404 errors)**
 - Verify the `base` path in `vite.config.ts` matches your repository name
 - Check that the repository name is `seng-cicd-demo`
+
+**❌ Routes not working after page refresh**
+- ✅ **Not an issue with HashRouter!** Hash-based routing works with page refresh
+- This is an advantage of HashRouter over BrowserRouter for static hosting
 
 **❌ Workflow permissions error**
 - Go to repository Settings → Actions → General
