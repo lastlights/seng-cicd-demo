@@ -52,7 +52,7 @@ pnpm run preview
 ### Frontend Development
 - ⚛️ **React Components**: How to build modular UI components
 - 📝 **TypeScript**: Type-safe JavaScript development
-- 🎨 **Modern CSS**: Responsive design with Grid and Flexbox
+- 🎨 **Tailwind CSS**: Utility-first styling with responsive design and dark mode
 - 🔄 **State Management**: React hooks and component state
 - 🌐 **Client-side Routing**: HashRouter for SPA navigation
 
@@ -94,6 +94,8 @@ pnpm run preview
 4. **E2E testing**: Set up Playwright or Cypress tests
 5. **Custom deployment**: Set up deployment to different platforms
 6. **Environment-specific builds**: Configure staging vs production builds
+7. **Custom Tailwind components**: Create reusable component classes
+8. **Dark mode toggle**: Add manual dark mode switching
 
 ## 🚨 Common Issues and Solutions
 

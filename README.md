@@ -53,7 +53,8 @@ pnpm run dev
 ### Build Tools
 - **Vite 5.0.0** - Fast build tool and dev server
 - **Biome** - Fast linter and formatter (replaces ESLint + Prettier)
-- **Prettier** - Additional code formatting support
+- **Tailwind CSS** - Utility-first CSS framework with dark mode support
+- **PostCSS** - CSS processing with Autoprefixer
 - **Vitest** - Unit testing framework
 
 ### Testing

@@ -20,76 +20,90 @@ function BuildInfo() {
 	const baseUrl = import.meta.env.BASE_URL;
 
 	return (
-		<div className="build-info">
-			<h3>🔧 Build Information</h3>
-			<div
-				style={{
-					display: "grid",
-					gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-					gap: "1rem",
-					textAlign: "left",
-				}}
-			>
-				<div>
-					<strong>Build Time:</strong>
-					<br />
-					<span style={{ fontSize: "0.9em" }}>
+		<div className="space-y-6">
+			<div className="text-center">
+				<h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-6">
+					🔧 Build Information
+				</h3>
+			</div>
+
+			<div className="grid grid-cols-1 gap-4 text-left sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+				<div className="space-y-1">
+					<div className="text-sm font-medium text-gray-900 dark:text-white">
+						Build Time:
+					</div>
+					<div className="text-sm text-gray-600 dark:text-gray-300">
 						{buildTime !== "Development"
 							? new Date(buildTime).toLocaleString()
 							: "Development Mode"}
-					</span>
+					</div>
 				</div>
-				<div>
-					<strong>Version:</strong>
-					<br />
-					<span style={{ fontSize: "0.9em" }}>{buildVersion}</span>
+
+				<div className="space-y-1">
+					<div className="text-sm font-medium text-gray-900 dark:text-white">
+						Version:
+					</div>
+					<div className="text-sm text-gray-600 dark:text-gray-300">
+						{buildVersion}
+					</div>
 				</div>
-				<div>
-					<strong>Environment:</strong>
-					<br />
-					<span
-						style={{ fontSize: "0.9em", color: isDev ? "#fbbf24" : "#4ade80" }}
+
+				<div className="space-y-1">
+					<div className="text-sm font-medium text-gray-900 dark:text-white">
+						Environment:
+					</div>
+					<div
+						className={`text-sm ${
+							isDev ? "text-yellow-500" : "text-green-500"
+						}`}
 					>
 						{nodeEnv} {isDev ? "(Dev Server)" : "(Production Build)"}
-					</span>
+					</div>
 				</div>
-				<div>
-					<strong>Build Tool:</strong>
-					<br />
-					<span style={{ fontSize: "0.9em" }}>
+
+				<div className="space-y-1">
+					<div className="text-sm font-medium text-gray-900 dark:text-white">
+						Build Tool:
+					</div>
+					<div className="text-sm text-gray-600 dark:text-gray-300">
 						Vite {import.meta.env.VITE_VERSION || "5.0.0"}
-					</span>
+					</div>
 				</div>
-				<div>
-					<strong>Router Type:</strong>
-					<br />
-					<span style={{ fontSize: "0.9em", color: "#4ade80" }}>
+
+				<div className="space-y-1">
+					<div className="text-sm font-medium text-gray-900 dark:text-white">
+						Router Type:
+					</div>
+					<div className="text-sm text-green-500">
 						HashRouter (#{baseUrl === "/" ? "local" : "github-pages"})
-					</span>
+					</div>
+				</div>
+
+				<div className="space-y-1">
+					<div className="text-sm font-medium text-gray-900 dark:text-white">
+						Styling:
+					</div>
+					<div className="text-sm text-blue-500">Tailwind CSS</div>
 				</div>
 			</div>
 
-			<details style={{ marginTop: "1rem", textAlign: "left" }}>
-				<summary style={{ cursor: "pointer", marginBottom: "0.5rem" }}>
-					<strong>Environment Variables</strong>
+			<details className="group">
+				<summary className="cursor-pointer text-sm font-medium text-gray-900 dark:text-white hover:text-primary-600 dark:hover:text-primary-400">
+					Environment Variables
 				</summary>
-				<pre
-					style={{
-						fontSize: "0.8em",
-						background: "rgba(0,0,0,0.2)",
-						padding: "0.5rem",
-						borderRadius: "4px",
-						overflow: "auto",
-					}}
-				>
-					{JSON.stringify(envVars, null, 2)}
-				</pre>
+				<div className="mt-3">
+					<pre className="text-xs bg-gray-100 dark:bg-gray-800 p-3 rounded-lg overflow-auto text-gray-800 dark:text-gray-200 border border-gray-200 dark:border-gray-700">
+						{JSON.stringify(envVars, null, 2)}
+					</pre>
+				</div>
 			</details>
 
-			<p style={{ fontSize: "0.8em", marginTop: "1rem", opacity: 0.7 }}>
-				This information is injected at build time and helps demonstrate how
-				CI/CD pipelines can inject dynamic values into applications.
-			</p>
+			<div className="text-center">
+				<p className="text-xs text-gray-500 dark:text-gray-400">
+					This information is injected at build time and helps demonstrate how
+					CI/CD pipelines can inject dynamic values into applications.
+				</p>
+			</div>
 		</div>
 	);
 }

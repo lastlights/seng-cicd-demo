@@ -25,13 +25,13 @@ function Pipeline() {
 			name: "Install Dependencies",
 			status: "success",
 			duration: 45,
-			description: "npm install or yarn install to get project dependencies",
+			description: "pnpm install to get project dependencies",
 		},
 		{
 			name: "Linting & Type Check",
 			status: "success",
 			duration: 8,
-			description: "ESLint checks code quality, TypeScript checks types",
+			description: "Biome checks code quality, TypeScript checks types",
 		},
 		{
 			name: "Unit Tests",
@@ -46,20 +46,20 @@ function Pipeline() {
 			description: "Vite builds optimized production bundle",
 		},
 		{
-			name: "Deploy to Staging",
+			name: "Deploy to GitHub Pages",
 			status: "success",
 			duration: 30,
-			description: "Deploy to staging environment for testing",
+			description: "Deploy to GitHub Pages for production hosting",
 		},
 		{
 			name: "Integration Tests",
 			status: "running",
-			description: "End-to-end tests in staging environment",
+			description: "End-to-end tests in production environment",
 		},
 		{
-			name: "Deploy to Production",
+			name: "Monitoring & Alerts",
 			status: "pending",
-			description: "Deploy to production after all checks pass",
+			description: "Monitor application health and performance",
 		},
 	]);
 
@@ -135,6 +135,21 @@ function Pipeline() {
 		}
 	};
 
+	const getStatusColor = (status: string) => {
+		switch (status) {
+			case "success":
+				return "bg-green-50 border-green-200 dark:bg-green-900/20 dark:border-green-800";
+			case "running":
+				return "bg-yellow-50 border-yellow-200 dark:bg-yellow-900/20 dark:border-yellow-800";
+			case "error":
+				return "bg-red-50 border-red-200 dark:bg-red-900/20 dark:border-red-800";
+			case "pending":
+				return "bg-gray-50 border-gray-200 dark:bg-gray-800 dark:border-gray-700";
+			default:
+				return "bg-gray-50 border-gray-200 dark:bg-gray-800 dark:border-gray-700";
+		}
+	};
+
 	const getStatusClass = (status: string) => {
 		switch (status) {
 			case "success":
@@ -144,107 +159,130 @@ function Pipeline() {
 			case "error":
 				return "status-error";
 			case "pending":
-				return "status-indicator";
+				return "bg-gray-400";
 			default:
-				return "status-indicator";
+				return "bg-gray-400";
 		}
 	};
 
+	const learningPoints = [
+		{
+			icon: "🔄",
+			title: "Automation",
+			description:
+				"Every code change triggers automated testing and deployment",
+		},
+		{
+			icon: "🛡️",
+			title: "Quality Gates",
+			description:
+				"Code must pass linting, type checks, and tests before deployment",
+		},
+		{
+			icon: "🚀",
+			title: "Fast Feedback",
+			description: "Developers get immediate feedback on their changes",
+		},
+		{
+			icon: "📈",
+			title: "Reliability",
+			description: "Consistent deployment process reduces human error",
+		},
+	];
+
 	return (
-		<div>
-			<h1>CI/CD Pipeline Demo</h1>
+		<div className="space-y-8">
+			<div className="text-center">
+				<h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl">
+					CI/CD Pipeline Demo
+				</h1>
+			</div>
 
 			<div className="card">
-				<h2>🚀 Continuous Integration & Deployment</h2>
-				<p>
-					This page demonstrates a typical CI/CD pipeline for a modern web
-					application. Each stage represents an automated step that occurs when
-					code is pushed to the repository.
-				</p>
+				<div className="text-center space-y-6">
+					<h2 className="text-2xl font-semibold text-gray-900 dark:text-white">
+						🚀 Continuous Integration & Deployment
+					</h2>
+					<p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+						This page demonstrates a typical CI/CD pipeline for a modern web
+						application. Each stage represents an automated step that occurs
+						when code is pushed to the repository.
+					</p>
 
-				<div style={{ margin: "2rem 0" }}>
-					<button
-						type="button"
-						onClick={simulatePipeline}
-						style={{ marginRight: "1rem" }}
-					>
-						Simulate Pipeline Run
-					</button>
-					<span style={{ fontSize: "0.9em", opacity: 0.8 }}>
-						Current Time: {currentTime.toLocaleTimeString()}
-					</span>
+					<div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+						<button
+							type="button"
+							onClick={simulatePipeline}
+							className="btn-primary px-6 py-3 text-lg"
+						>
+							Simulate Pipeline Run
+						</button>
+						<span className="text-sm text-gray-500 dark:text-gray-400">
+							Current Time: {currentTime.toLocaleTimeString()}
+						</span>
+					</div>
 				</div>
 			</div>
 
 			<div className="card">
-				<h2>📋 Pipeline Stages</h2>
-				<div style={{ textAlign: "left", maxWidth: "800px", margin: "0 auto" }}>
-					{stages.map((stage, index) => (
-						<div
-							key={stage.name}
-							style={{
-								display: "flex",
-								alignItems: "center",
-								padding: "1rem",
-								margin: "0.5rem 0",
-								border: "1px solid rgba(255, 255, 255, 0.1)",
-								borderRadius: "8px",
-								background:
-									stage.status === "running"
-										? "rgba(251, 191, 36, 0.1)"
-										: "transparent",
-							}}
-						>
-							<span style={{ fontSize: "1.5em", marginRight: "1rem" }}>
-								{getStatusIcon(stage.status)}
-							</span>
-							<div style={{ flex: 1 }}>
-								<h3 style={{ margin: "0 0 0.5rem 0" }}>
-									{index + 1}. {stage.name}
-									{stage.duration && (
-										<span
-											style={{
-												fontSize: "0.8em",
-												opacity: 0.7,
-												marginLeft: "1rem",
-											}}
-										>
-											({stage.duration}s)
-										</span>
-									)}
+				<div className="space-y-6">
+					<h2 className="text-2xl font-semibold text-gray-900 dark:text-white text-center">
+						📋 Pipeline Stages
+					</h2>
+					<div className="space-y-4 max-w-4xl mx-auto">
+						{stages.map((stage, index) => (
+							<div
+								key={stage.name}
+								className={`p-4 rounded-lg border transition-all duration-200 ${getStatusColor(
+									stage.status,
+								)}`}
+							>
+								<div className="flex items-center space-x-4">
+									<span className="text-2xl flex-shrink-0">
+										{getStatusIcon(stage.status)}
+									</span>
+									<div className="flex-1 min-w-0">
+										<div className="flex items-center space-x-2 mb-1">
+											<h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+												{index + 1}. {stage.name}
+											</h3>
+											{stage.duration && (
+												<span className="text-sm text-gray-500 dark:text-gray-400">
+													({stage.duration}s)
+												</span>
+											)}
+										</div>
+										<p className="text-gray-600 dark:text-gray-300">
+											{stage.description}
+										</p>
+									</div>
+									<span
+										className={`status-indicator ${getStatusClass(stage.status)}`}
+									/>
+								</div>
+							</div>
+						))}
+					</div>
+				</div>
+			</div>
+
+			<div className="card">
+				<div className="text-center space-y-6">
+					<h2 className="text-2xl font-semibold text-gray-900 dark:text-white">
+						🎓 Learning Points
+					</h2>
+					<div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+						{learningPoints.map((point) => (
+							<div key={point.title} className="feature-card text-center">
+								<div className="text-3xl mb-3">{point.icon}</div>
+								<h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+									{point.title}
 								</h3>
-								<p style={{ margin: 0, fontSize: "0.9em", opacity: 0.8 }}>
-									{stage.description}
+								<p className="text-gray-600 dark:text-gray-300">
+									{point.description}
 								</p>
 							</div>
-							<span
-								className={`status-indicator ${getStatusClass(stage.status)}`}
-							/>
-						</div>
-					))}
-				</div>
-			</div>
-
-			<div className="card">
-				<h2>🎓 Learning Points</h2>
-				<div className="feature-grid">
-					<div className="feature-card">
-						<h3>🔄 Automation</h3>
-						<p>Every code change triggers automated testing and deployment</p>
-					</div>
-					<div className="feature-card">
-						<h3>🛡️ Quality Gates</h3>
-						<p>
-							Code must pass linting, type checks, and tests before deployment
-						</p>
-					</div>
-					<div className="feature-card">
-						<h3>🚀 Fast Feedback</h3>
-						<p>Developers get immediate feedback on their changes</p>
-					</div>
-					<div className="feature-card">
-						<h3>📈 Reliability</h3>
-						<p>Consistent deployment process reduces human error</p>
+						))}
 					</div>
 				</div>
 			</div>
